@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    min-height: 100vh;
+  }
+
+.yellow-line {
+  border: 2px solid $color-orange;
+  width: 50px;
+}
+
+.center-component {
+  margin: auto;
+  text-align: center;
+  width: 800px;
+}
