@@ -1,106 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Form } from 'react-final-form';
-import cn from 'classnames';
 import Logo from './Logo';
 import Input from './Input';
 import DropDownSelect from './Select';
 import ListInputs from './ListInputs';
-
-const validation = (values) => {
-  const errors = {}
-
-  if (!values.firstName) {
-    errors.firstName = 'First name cant be empty'
-  }
-
-  if (!values.bio) {
-    errors.bio = 'Bio cant be empty'
-  }
-
-  return errors
-}
+import {
+  SINGLE_DROPDOWN_OPTIONS,
+  MULTI_DROPDOWN_OPTIONS,
+  BOX_CHECKBOX_OPTIONS,
+  RADIO_CHECKBOX_OPTIONS,
+} from '../helpers/constatns';
+import { validation } from '../helpers/validation';
 
 class MainPage extends Component {
   state = {
     test: true,
   };
-
-  favoriteColor = [
-    {
-      value:"SingleDropdownOption#1",
-      label: 'Single Dropdown Option #1'
-    },
-    {
-      value:"SingleDropdownOption#2",
-      label: 'Single Dropdown Option #2'
-    },
-    {
-      value:"SingleDropdownOption#3",
-      label: 'Single Dropdown Option #3'
-    }
-  ];
-
-  food = [
-    {
-      value:"MultiDropdownOption#1",
-      label: 'Multi Dropdown Option #1'
-    },
-    {
-      value:"MultiDropdownOption#2",
-      label: 'Multi Dropdown Option #2'
-    },
-    {
-      value:"MultiDropdownOption#3",
-      label: 'Multi Dropdown Option #3'
-    },
-    {
-      value:"MultiDropdownOption#4",
-      label: 'Multi Dropdown Option #4'
-    },
-    {
-      value:"MultiDropdownOption#5",
-      label: 'Multi Dropdown Option #5'
-    },
-    {
-      value:"MultiDropdownOption#6",
-      label: 'Multi Dropdown Option #6'
-    }
-  ];
-
-  checkbox = [
-    {
-      value:"BoxCheckbox#1",
-      label: 'Box Checkbox #1'
-    },
-    {
-      value:"BoxCheckbox#2",
-      label: 'Box Checkbox #2'
-    },
-    {
-      value:"BoxCheckbox#3",
-      label: 'Box Checkbox #3'
-    },
-    {
-      value:"BoxCheckbox#4",
-      label: 'Box Checkbox #4'
-    },
-  ];
-
-  radio = [
-    {
-      value:"RadioCheckbox#1",
-      label: 'Radio Checkbox #1'
-    },
-    {
-      value:"RadioCheckbox#2",
-      label: 'Radio Checkbox #2'
-    },
-    {
-      value:"RadioCheckbox#3",
-      label: 'Radio Checkbox #3'
-    },
-  ];
 
   onSubmit = test => {
     console.log(test);
@@ -132,55 +48,61 @@ class MainPage extends Component {
                 <form onSubmit={handleSubmit}>
                   <div>
                     <Input
-                      name="firstName"
-                      component="input"
-                      placeholder="First Name"
-                      label="First Name"
+                      name="firstInput"
+                      placeholder="First Input"
+                      label="First Input"
                     />
                   </div>
                   <div>
                     <Input
-                      name="bio"
-                      label="Bio"
-                      placeholder="Bio"
+                      name="secondInput"
+                      label="Second Input"
+                      placeholder="Second Input"
                     />
                   </div>
                   <div>
                     <Input
-                      name="phone"
-                      label="Phone"
-                      placeholder="Phone"
+                      name="thirdInput"
+                      label="Third Input (should be number)"
+                      placeholder="Third Input"
+                    />
+                  </div>
+                  <div>
+                    <Input
+                      name="numberInput"
+                      label="Number Input"
+                      placeholder="Number Input"
                       type="number"
                     />
                   </div>
                   <div>
                     <DropDownSelect
-                      label="Select Input single color"
-                      name="favoriteColor"
-                      options={this.favoriteColor}
+                      label="Single Dropdown"
+                      name="singleDropdown"
+                      options={SINGLE_DROPDOWN_OPTIONS}
                     />
                   </div>
                   <div>
                     <DropDownSelect
-                      label="Select Input multi food"
-                      name="food"
-                      options={this.food}
+                      label="Multi Dropdown"
+                      name="multiDropdown"
+                      options={MULTI_DROPDOWN_OPTIONS}
                       closeOnSelect={false}
                       isMulti
                     />
                   </div>
                   <div>
                     <ListInputs
-                      label="Select Input multi food"
+                      label="Checkbox Input"
                       name="checkbox"
-                      list={this.checkbox}
+                      list={BOX_CHECKBOX_OPTIONS}
                     />
                   </div>
                   <div>
                     <ListInputs
-                      label="Select Input multi food"
+                      label="Radio Checkbox Input"
                       name="radio"
-                      list={this.radio}
+                      list={RADIO_CHECKBOX_OPTIONS}
                       isSingleChoose
                     />
                   </div>
