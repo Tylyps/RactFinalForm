@@ -10,7 +10,6 @@ const DropDownSelect = ({
   inputRef,
   label,
   name,
-  touched,
   options,
   closeOnSelect,
   ...rest
@@ -45,23 +44,18 @@ const DropDownSelect = ({
 
 DropDownSelect.defaultProps = {
   className: '',
-  error: '',
   id: '',
-  label: '',
-  touched: false,
   inputRef: null,
+  label: '',
   closeOnSelect: true,
 }
 
 DropDownSelect.propTypes = {
   className: PropTypes.string,
-  error: PropTypes.string,
   id: PropTypes.string,
   inputRef: PropTypes.shape({}),
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   name: PropTypes.string.isRequired,
-  touched: PropTypes.bool,
-  type: PropTypes.string,
   closeOnSelect: PropTypes.bool,
   options: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string,

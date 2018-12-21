@@ -9,7 +9,6 @@ const Input = ({
   inputRef,
   label,
   name,
-  touched,
   ...rest
 }) => {
   const inputId = id || `${name}-input`
@@ -42,7 +41,6 @@ Input.defaultProps = {
   className: '',
   id: '',
   label: '',
-  touched: false,
   type: 'text',
   inputRef: null,
 }
@@ -53,7 +51,6 @@ Input.propTypes = {
   inputRef: PropTypes.shape({}),
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   name: PropTypes.string.isRequired,
-  touched: PropTypes.bool,
   type: PropTypes.string,
 }
 

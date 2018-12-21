@@ -5,6 +5,7 @@ import Logo from './Logo';
 import Input from './Input';
 import DropDownSelect from './Select';
 import ListInputs from './ListInputs';
+import Results from './Results';
 import {
   SINGLE_DROPDOWN_OPTIONS,
   MULTI_DROPDOWN_OPTIONS,
@@ -15,26 +16,29 @@ import { validation } from '../helpers/validation';
 
 class MainPage extends Component {
   state = {
-    test: true,
+    isSubmited: false,
+    results: {},
   };
 
-  onSubmit = test => {
-    console.log(test);
+  onSubmit = results => {
+    console.log(results);
+    this.setState({ isSubmited: true, results });
   }
 
-  toggleButtonDisable = () => this.setState(prevState => ({disableButton: !prevState.disableButton}));
+  toogleResultsAndForm = () => this.setState(prevState => ({isSubmited: !prevState.isSubmited}));
 
   render() {
     const {
-      test,
+      isSubmited,
+      results,
     } = this.state;
 
     return (
       <div className="center-component">
-        <Link to="/test" onClick={this.toggleCounter}>
+        <Link to="/test" onClick={this.toogleResultsAndForm}>
           <Logo />
         </Link>
-        {test &&
+        {!isSubmited &&
         <div>
           <Form
             onSubmit={this.onSubmit}
@@ -119,6 +123,10 @@ class MainPage extends Component {
           />
         </div>
         }
+        {isSubmited &&
+          <Results
+            {...results}
+          />}
       </div>
     );
   };

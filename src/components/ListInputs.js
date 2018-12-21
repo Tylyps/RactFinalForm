@@ -3,15 +3,10 @@ import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
 
 const ListInputs = ({
-  className,
-  id,
-  inputRef,
   name,
-  touched,
   label,
   list,
   isSingleChoose,
-  ...rest
 }) => (
   <div className="form-control" style={{display: 'flex', flexDirection: 'column'}}>
     <label>{label}</label>
@@ -32,21 +27,19 @@ const ListInputs = ({
 
 
 ListInputs.defaultProps = {
-  className: '',
-  id: '',
-  touched: false,
-  type: 'text',
-  inputRef: null,
+  name: '',
+  label: '',
+  list: [],
   isSingleChoose: false,
 }
 
 ListInputs.propTypes = {
-  className: PropTypes.string,
-  id: PropTypes.string,
-  inputRef: PropTypes.shape({}),
-  name: PropTypes.string.isRequired,
-  touched: PropTypes.bool,
-  type: PropTypes.string,
+  name: PropTypes.string,
+  label: PropTypes.string,
+  list: PropTypes.arrayOf(PropTypes.shape({
+    value: PropTypes.string,
+    label: PropTypes.string,
+  })),
   isSingleChoose: PropTypes.bool,
 }
 
