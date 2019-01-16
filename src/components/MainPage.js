@@ -12,7 +12,11 @@ import {
   BOX_CHECKBOX_OPTIONS,
   RADIO_CHECKBOX_OPTIONS,
 } from '../helpers/constatns';
-import { validation } from '../helpers/validation';
+import {
+  required,
+  min10,
+} from '../helpers/validations';
+import validation from '../helpers/validation';
 
 class MainPage extends Component {
   state = {
@@ -62,6 +66,7 @@ class MainPage extends Component {
                       name="secondInput"
                       label="Second Input"
                       placeholder="Second Input"
+                      validate={required}
                     />
                   </div>
                   <div>
@@ -77,6 +82,7 @@ class MainPage extends Component {
                       label="Number Input"
                       placeholder="Number Input"
                       type="number"
+                      validate={min10}
                     />
                   </div>
                   <div>

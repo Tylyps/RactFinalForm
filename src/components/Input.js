@@ -9,6 +9,7 @@ const Input = ({
   inputRef,
   label,
   name,
+  validate,
   ...rest
 }) => {
   const inputId = id || `${name}-input`
@@ -16,6 +17,7 @@ const Input = ({
   return (
     <Field
       name={name}
+      validate={validate}
       render={({ input, meta }) => (
         <div className="form-control">
           {label !== false &&
